@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/assignments/assignments.iml" filepath="$PROJECT_DIR$/assignments/assignments.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chapter-five/chapter-five.iml" filepath="$PROJECT_DIR$/chapter-five/chapter-five.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chapter-four/chapter-four.iml" filepath="$PROJECT_DIR$/chapter-four/chapter-four.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chapter-seven/chapter-seven.iml" filepath="$PROJECT_DIR$/chapter-seven/chapter-seven.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chapter-six/chapter-six.iml" filepath="$PROJECT_DIR$/chapter-six/chapter-six.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chapter-three/chapter-three.iml" filepath="$PROJECT_DIR$/chapter-three/chapter-three.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chapter-two/chapter-two.iml" filepath="$PROJECT_DIR$/chapter-two/chapter-two.iml" />
+      <module fileurl="file://$PROJECT_DIR$/deitel.iml" filepath="$PROJECT_DIR$/deitel.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,19 @@
+
+
+
+chapter-five
+5.11 (Find the Smallest Value)
+5.12 (Calculating the Product of Odd Integers)
+5.13 (Factorials)
+5.14 (Modified Compound-Interest Program)
+5.15 (Triangle Printing Program)
+5.16 (Bar Chart Printing Program)
+5.17 (Calculating Sales)
+5.18 (Modified Compound-Interest Program)
+
+5.20 (Calculating the Value of π)
+5.21 (Pythagorean Triples)
+5.22 (Modified Triangle Printing Program)
+5.23 (De Morgan’s Laws)
+5.24 (Diamond Printing Program)
+
