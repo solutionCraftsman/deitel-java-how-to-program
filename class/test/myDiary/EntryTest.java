@@ -63,13 +63,16 @@ class EntryTest {
         //given
         Entry entry = new Entry("My First Story");
         entry.setEntryBody("Great!");
-        String preview = entry.viewEntry();
+        String actual = entry.viewEntry();
         String expected = (
                 "Title: My First Story\n"
                 + "Entry Date: " + LocalDate.now() + "\n"
                 + "Entry Body: Great!"
                 );
 
-        assertEquals(expected, preview);
+        assertEquals(expected, actual);
+
+        actual = entry.toString();
+        assertEquals(expected, actual);
     }
 }

@@ -22,7 +22,7 @@ class DiaryTest {
         Diary myDiary = new Diary(5);
 
         //when
-        int numberOfEntries = myDiary.getNumberOfDiaryEntries();
+        int numberOfEntries = myDiary.getEntries().length;
 
         //assert
         assertEquals(5, numberOfEntries);
@@ -39,4 +39,55 @@ class DiaryTest {
         assertNotNull(entries);
     }
 
+    @Test
+    void testDiaryEntryCanBeEnteredAndRetrieved() {
+        //given
+        Diary myDiary = new Diary(5);
+        Entry entry = new Entry("My First Story");
+        //when
+        entry.setEntryBody("Great!");
+        myDiary.addNewEntry(entry);
+        //assert for index 0
+        assertEquals(entry, myDiary.getEntries()[0]);
+        //OR
+        Entry[] expectedEntry = new Entry[5];
+        expectedEntry[0] = entry;
+        assertArrayEquals(expectedEntry, myDiary.getEntries());
+
+        //Add to second index
+        Entry secondEntry = new Entry("My Second Story");
+        //when
+        secondEntry.setEntryBody("Amazing!");
+        myDiary.addNewEntry(secondEntry);
+        //assert for index 1
+        assertEquals(secondEntry, myDiary.getEntries()[1]);
+        //OR
+        expectedEntry[1] = secondEntry;
+        assertArrayEquals(expectedEntry, myDiary.getEntries());
+
+        //Add to remaining parts of the array
+        for (int i = 2; i < myDiary.getEntries().length; i++) {
+            myDiary.addNewEntry(secondEntry);
+            assertEquals(secondEntry, myDiary.getEntries()[i]);
+        }
+    }
+
+    @Test
+    void testNoMoreEntryCanBeAddedWhenDiaryFull() {
+        //given
+        Diary myDiary = new Diary(5);
+        Entry entry = new Entry("My First Story");
+        //when
+        entry.setEntryBody("Great!");
+
+        for (int entryCounter = 0; entryCounter < myDiary.getEntries().length; entryCounter++) {
+            myDiary.addNewEntry(entry);
+        }
+
+        assertEquals(5, myDiary.getNoOfEntriesAdded());
+
+        myDiary.addNewEntry(entry);
+        assertEquals(5, myDiary.getNoOfEntriesAdded());
+    }
 }
+
