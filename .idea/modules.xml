@@ -9,6 +9,7 @@
       <module fileurl="file://$PROJECT_DIR$/chapter-six/chapter-six.iml" filepath="$PROJECT_DIR$/chapter-six/chapter-six.iml" />
       <module fileurl="file://$PROJECT_DIR$/chapter-three/chapter-three.iml" filepath="$PROJECT_DIR$/chapter-three/chapter-three.iml" />
       <module fileurl="file://$PROJECT_DIR$/chapter-two/chapter-two.iml" filepath="$PROJECT_DIR$/chapter-two/chapter-two.iml" />
+      <module fileurl="file://$PROJECT_DIR$/class/class.iml" filepath="$PROJECT_DIR$/class/class.iml" />
       <module fileurl="file://$PROJECT_DIR$/deitel.iml" filepath="$PROJECT_DIR$/deitel.iml" />
     </modules>
   </component>

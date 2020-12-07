@@ -1,5 +1,3 @@
-package classwork;
-
 public class ArrayOperations {
 
     private int[] array;
