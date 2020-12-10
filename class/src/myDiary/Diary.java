@@ -16,8 +16,7 @@ public class Diary {
 
     public void addNewEntry(Entry entry) {
         if(noOfEntriesAdded < entries.length) {
-            entries[noOfEntriesAdded] = entry;
-            noOfEntriesAdded++;
+            entries[noOfEntriesAdded++] = entry;
         }
     }
 

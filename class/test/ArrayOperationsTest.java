@@ -2,6 +2,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ArrayOperationsTest {
@@ -63,6 +64,16 @@ class ArrayOperationsTest {
         int[] array = {2, 4, 6, 8};
         arrayOperations = new ArrayOperations(array);
         assertEquals(18, arrayOperations.getMaximumPossibleSum());
+    }
+
+    @Test
+    void testArraySortMethod() {
+        int[] unsortedArray = {5, 2, 1, 8, 6};
+        arrayOperations = new ArrayOperations(unsortedArray);
+        int[] sortedArray = {1, 2, 5, 6, 8};
+        arrayOperations.sort();
+        arrayOperations.printArray();
+        assertArrayEquals(sortedArray, arrayOperations.getArray());
     }
 
 }

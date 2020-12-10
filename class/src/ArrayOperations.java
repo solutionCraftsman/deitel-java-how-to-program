@@ -27,8 +27,8 @@ public class ArrayOperations {
     }
 
     public int getMinimumElement() {
-        int minimum = Integer.MAX_VALUE;
-        for (int arrayElementCounter = 0; arrayElementCounter < array.length; arrayElementCounter++) {
+        int minimum = array[0];
+        for (int arrayElementCounter = 1; arrayElementCounter < array.length; arrayElementCounter++) {
             if (array[arrayElementCounter] < minimum) {
                 minimum = array[arrayElementCounter];
             }
@@ -37,8 +37,8 @@ public class ArrayOperations {
     }
 
     public int getMaximumElement() {
-        int maximum = Integer.MIN_VALUE;
-        for (int arrayElementCounter = 0; arrayElementCounter < array.length; arrayElementCounter++) {
+        int maximum = array[0];
+        for (int arrayElementCounter = 1; arrayElementCounter < array.length; arrayElementCounter++) {
             if (array[arrayElementCounter] > maximum) {
                 maximum = array[arrayElementCounter];
             }
@@ -90,5 +90,34 @@ public class ArrayOperations {
 
     public int getItemInArray(int elementPosition) {
         return array[elementPosition];
+    }
+
+    public int[] getArray() {
+        return array;
+    }
+
+    public void sort() {
+        int temp;
+        for (int arrayItem = 0; arrayItem < array.length; arrayItem++) {
+            /*if(array[arrayItem] > array[arrayItem + 1]) {
+                temp = array[arrayItem + 1];
+                array[arrayItem + 1] = array[arrayItem];
+                array[arrayItem] = temp;
+            }*/
+
+            for (int arrayItemInner = 0; arrayItemInner < arrayItem; arrayItemInner++) {
+                if(array[arrayItem] < array[arrayItemInner]) {
+                    temp = array[arrayItem];
+                    array[arrayItem] = array[arrayItemInner];
+                    array[arrayItemInner] = temp;
+                }
+            }
+        }
+    }
+
+    public void printArray() {
+        for (int arrayItem: array) {
+            System.out.println(arrayItem);
+        }
     }
 }

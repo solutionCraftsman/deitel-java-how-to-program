@@ -20,10 +20,8 @@ class DiaryTest {
     void testDiaryEntryIsSet() {
         //given
         Diary myDiary = new Diary(5);
-
         //when
         int numberOfEntries = myDiary.getEntries().length;
-
         //assert
         assertEquals(5, numberOfEntries);
     }
@@ -42,7 +40,7 @@ class DiaryTest {
     @Test
     void testDiaryEntryCanBeEnteredAndRetrieved() {
         //given
-        Diary myDiary = new Diary(5);
+        Diary myDiary = new Diary(3);
         Entry entry = new Entry("My First Story");
         //when
         entry.setEntryBody("Great!");
@@ -50,7 +48,7 @@ class DiaryTest {
         //assert for index 0
         assertEquals(entry, myDiary.getEntries()[0]);
         //OR
-        Entry[] expectedEntry = new Entry[5];
+        Entry[] expectedEntry = new Entry[3];
         expectedEntry[0] = entry;
         assertArrayEquals(expectedEntry, myDiary.getEntries());
 
@@ -65,29 +63,41 @@ class DiaryTest {
         expectedEntry[1] = secondEntry;
         assertArrayEquals(expectedEntry, myDiary.getEntries());
 
-        //Add to remaining parts of the array
-        for (int i = 2; i < myDiary.getEntries().length; i++) {
-            myDiary.addNewEntry(secondEntry);
-            assertEquals(secondEntry, myDiary.getEntries()[i]);
-        }
+        //Add to third index
+        Entry thirdEntry = new Entry("My Third Story");
+        //when
+        secondEntry.setEntryBody("Glorious!");
+        myDiary.addNewEntry(secondEntry);
+        //assert for index 2
+        assertEquals(secondEntry, myDiary.getEntries()[2]);
+        //OR
+        expectedEntry[2] = secondEntry;
+        assertArrayEquals(expectedEntry, myDiary.getEntries());
     }
 
     @Test
     void testNoMoreEntryCanBeAddedWhenDiaryFull() {
         //given
-        Diary myDiary = new Diary(5);
+        Diary myDiary = new Diary(2);
         Entry entry = new Entry("My First Story");
         //when
         entry.setEntryBody("Great!");
-
-        for (int entryCounter = 0; entryCounter < myDiary.getEntries().length; entryCounter++) {
-            myDiary.addNewEntry(entry);
-        }
-
-        assertEquals(5, myDiary.getNoOfEntriesAdded());
-
         myDiary.addNewEntry(entry);
-        assertEquals(5, myDiary.getNoOfEntriesAdded());
+
+        Entry secondEntry = new Entry("My Second Story");
+        //when
+        secondEntry.setEntryBody("Amazing!");
+        myDiary.addNewEntry(secondEntry);
+
+        assertEquals(2, myDiary.getNoOfEntriesAdded());
+
+        //Add extra entry
+        Entry thirdEntry = new Entry("My Third Story");
+        //when
+        thirdEntry.setEntryBody("Glorious!");
+        myDiary.addNewEntry(thirdEntry);
+
+        assertEquals(2, myDiary.getNoOfEntriesAdded());
     }
 }
 
