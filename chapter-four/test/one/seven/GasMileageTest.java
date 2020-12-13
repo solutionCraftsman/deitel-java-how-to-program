@@ -21,8 +21,13 @@ class GasMileageTest {
 
     @Test
     void testProgramCanCalculateMilesPerGallon_forEachTrip() {
-        double mPG = gM.calculateMilesPerGallon(10, 5);
-        assertEquals(2.0, mPG);
+        assertEquals(2.00, gM.calculateMilesPerGallon(10, 5));
+    }
+
+    @Test
+    void testProgramCanDisplayMilesPerGallon_forEachTrip() {
+        gM.calculateMilesPerGallon(10, 5);
+        assertEquals(2.00, gM.getMilesPerGallonForThisTrip());
     }
 
     @Test

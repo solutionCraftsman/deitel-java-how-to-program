@@ -13,6 +13,10 @@ public class GasMileage {
          return milePerGallonForThisTrip;
     }
 
+    public double getMilesPerGallonForThisTrip() {
+        return Double.parseDouble(String.format("%.2f", milePerGallonForThisTrip));
+    }
+
     public void calculateCombinedMilesPerGallon() {
         combinedMilesPerGallon += milePerGallonForThisTrip;
     }
