@@ -26,7 +26,7 @@ public class GasMileage {
     }
 
     public int obtainData(String dataLabel) {
-        return Integer.parseInt(JOptionPane.showInputDialog("Enter " + dataLabel + " for this trip"));
+        return Integer.parseInt(JOptionPane.showInputDialog("Enter " + dataLabel + " for this trip, -1 to end"));
     }
 
     public boolean continueReceivingInput(int input) {
