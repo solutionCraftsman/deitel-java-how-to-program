@@ -8,11 +8,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class GasMileageTest {
 
-    GasMileage gM;
+    GasMileage gasMileage;
 
     @BeforeEach
     void setUp() {
-        gM = new GasMileage();
+        gasMileage = new GasMileage();
     }
 
     @AfterEach
@@ -21,34 +21,34 @@ class GasMileageTest {
 
     @Test
     void testProgramCanCalculateMilesPerGallon_forEachTrip() {
-        assertEquals(2.00, gM.calculateMilesPerGallon(10, 5));
+        assertEquals(2.00, gasMileage.calculateMilesPerGallon(10, 5));
     }
 
     @Test
     void testProgramCanDisplayMilesPerGallon_forEachTrip() {
-        gM.calculateMilesPerGallon(10, 5);
-        assertEquals(2.00, gM.getMilesPerGallonForThisTrip());
+        gasMileage.calculateMilesPerGallon(10, 5);
+        assertEquals(2.00, gasMileage.getMilesPerGallonForThisTrip());
     }
 
     @Test
     void testProgramCanCalculate_andPrint_combinedMilesPerGallon_upToACertainPoint() {
-        gM.calculateMilesPerGallon(10, 5);
-        gM.calculateCombinedMilesPerGallon();
-        gM.calculateMilesPerGallon(6, 2);
-        gM.calculateCombinedMilesPerGallon();
-        gM.calculateMilesPerGallon(8, 3);
-        gM.calculateCombinedMilesPerGallon();
-        assertEquals(7.67, gM.getCombinedMilesPerGallon());
+        gasMileage.calculateMilesPerGallon(10, 5);
+        gasMileage.calculateCombinedMilesPerGallon();
+        gasMileage.calculateMilesPerGallon(6, 2);
+        gasMileage.calculateCombinedMilesPerGallon();
+        gasMileage.calculateMilesPerGallon(8, 3);
+        gasMileage.calculateCombinedMilesPerGallon();
+        assertEquals(7.67, gasMileage.getCombinedMilesPerGallon());
     }
 
     @Test
     void testDataCanBeObtainedFromUser_withJOptionPane() {
-        assertEquals(10, gM.obtainData("Miles Driven"));
+        assertEquals(10, gasMileage.obtainData("Miles Driven"));
     }
 
     @Test
     void testDataCanBeObtainedFromUser_withSentinelControlledLoop() {
-        assertTrue(gM.continueReceivingInput(gM.obtainData("Enter Gallons Used")));
-        assertFalse(gM.continueReceivingInput(gM.obtainData("Enter Gallons Used")));
+        assertTrue(gasMileage.continueReceivingInput(gasMileage.obtainData("Enter Gallons Used")));
+        assertFalse(gasMileage.continueReceivingInput(gasMileage.obtainData("Enter Gallons Used")));
     }
 }
