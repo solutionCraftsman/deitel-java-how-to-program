@@ -42,7 +42,10 @@ class CreditLimitCalculatorTest {
 
     @Test
     void testBalanceCanBeCalculated() {
-        assertEquals(1_300.0, creditLimitCalculator.calculateBalance());
+        //when
+        double newBalance = creditLimitCalculator.calculateBalance();
+        //assert
+        assertEquals(1_300.0, newBalance);
     }
 
     @Test
