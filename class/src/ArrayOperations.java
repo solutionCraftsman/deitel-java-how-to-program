@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class ArrayOperations {
 
     private int[] array;
