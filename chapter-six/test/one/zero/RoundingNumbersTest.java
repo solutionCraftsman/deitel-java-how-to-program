@@ -47,4 +47,3 @@ class RoundingNumbersTest {
         assertEquals(-42442.745, roundingNumbers.roundToThousandths(-42442.745));
     }
 }
-
