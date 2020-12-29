@@ -34,5 +34,6 @@ class SeparatingDigitsTest {
     void testDisplayDigits() {
         assertEquals("4  5  6  2", separatingDigits.displayDigits(4562));
         assertEquals("9  9  9  9  9", separatingDigits.displayDigits(99999));
+        assertEquals("Only 1 - 99999 allowed", separatingDigits.displayDigits(999999));
     }
 }

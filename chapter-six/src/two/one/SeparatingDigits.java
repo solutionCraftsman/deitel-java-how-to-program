@@ -13,7 +13,7 @@ public class SeparatingDigits {
     public String displayDigits(int integer) {
 
         if(integer < 1 || integer > 99999) {
-            return "Only 1 - 99999 allowed.";
+            return "Only 1 - 99999 allowed";
         }
 
         String separatedDigits = "";
