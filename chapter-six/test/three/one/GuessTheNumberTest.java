@@ -22,36 +22,41 @@ class GuessTheNumberTest {
         GuessTheNumber guessTheNumber = new GuessTheNumber();
 
         guessTheNumber.generateRandomNumber();
-        guessTheNumber.guessTheNumber(guessTheNumber.getRandomNumber());
+        int randomNumber = guessTheNumber.getRandomNumber();
+        guessTheNumber.guessTheNumber(randomNumber);
         assertEquals("Either you know the secret or you got lucky!",
                 guessTheNumber.getFeedback());
 
         guessTheNumber.generateRandomNumber();
-        guessTheNumber.guessTheNumber(guessTheNumber.getRandomNumber() - 1);
-        guessTheNumber.guessTheNumber(guessTheNumber.getRandomNumber() - 2);
-        guessTheNumber.guessTheNumber(guessTheNumber.getRandomNumber() - 3);
-        guessTheNumber.guessTheNumber(guessTheNumber.getRandomNumber() - 4);
-        guessTheNumber.guessTheNumber(guessTheNumber.getRandomNumber() - 5);
-        guessTheNumber.guessTheNumber(guessTheNumber.getRandomNumber() - 6);
-        guessTheNumber.guessTheNumber(guessTheNumber.getRandomNumber() - 7);
-        guessTheNumber.guessTheNumber(guessTheNumber.getRandomNumber() - 8);
-        guessTheNumber.guessTheNumber(guessTheNumber.getRandomNumber() - 9);
-        guessTheNumber.guessTheNumber(guessTheNumber.getRandomNumber());
+        randomNumber = guessTheNumber.getRandomNumber();
+        guessTheNumber.setNoOfGuesses(0);
+        guessTheNumber.guessTheNumber(randomNumber - 1);
+        guessTheNumber.guessTheNumber(randomNumber - 2);
+        guessTheNumber.guessTheNumber(randomNumber - 3);
+        guessTheNumber.guessTheNumber(randomNumber - 4);
+        guessTheNumber.guessTheNumber(randomNumber - 5);
+        guessTheNumber.guessTheNumber(randomNumber - 6);
+        guessTheNumber.guessTheNumber(randomNumber - 7);
+        guessTheNumber.guessTheNumber(randomNumber - 8);
+        guessTheNumber.guessTheNumber(randomNumber - 9);
+        guessTheNumber.guessTheNumber(randomNumber);
         assertEquals("Aha! You know the secret!",
                 guessTheNumber.getFeedback());
 
         guessTheNumber.generateRandomNumber();
-        guessTheNumber.guessTheNumber(guessTheNumber.getRandomNumber() - 1);
-        guessTheNumber.guessTheNumber(guessTheNumber.getRandomNumber() - 2);
-        guessTheNumber.guessTheNumber(guessTheNumber.getRandomNumber() - 3);
-        guessTheNumber.guessTheNumber(guessTheNumber.getRandomNumber() - 4);
-        guessTheNumber.guessTheNumber(guessTheNumber.getRandomNumber() - 5);
-        guessTheNumber.guessTheNumber(guessTheNumber.getRandomNumber() - 6);
-        guessTheNumber.guessTheNumber(guessTheNumber.getRandomNumber() - 7);
-        guessTheNumber.guessTheNumber(guessTheNumber.getRandomNumber() - 8);
-        guessTheNumber.guessTheNumber(guessTheNumber.getRandomNumber() - 9);
-        guessTheNumber.guessTheNumber(guessTheNumber.getRandomNumber() - 10);
-        guessTheNumber.guessTheNumber(guessTheNumber.getRandomNumber());
+        randomNumber = guessTheNumber.getRandomNumber();
+        guessTheNumber.setNoOfGuesses(0);
+        guessTheNumber.guessTheNumber(randomNumber - 1);
+        guessTheNumber.guessTheNumber(randomNumber - 2);
+        guessTheNumber.guessTheNumber(randomNumber - 3);
+        guessTheNumber.guessTheNumber(randomNumber - 4);
+        guessTheNumber.guessTheNumber(randomNumber - 5);
+        guessTheNumber.guessTheNumber(randomNumber - 6);
+        guessTheNumber.guessTheNumber(randomNumber - 7);
+        guessTheNumber.guessTheNumber(randomNumber - 8);
+        guessTheNumber.guessTheNumber(randomNumber - 9);
+        guessTheNumber.guessTheNumber(randomNumber - 10);
+        guessTheNumber.guessTheNumber(randomNumber);
         assertEquals("You should be able to do better!",
                 guessTheNumber.getFeedback());
     }
