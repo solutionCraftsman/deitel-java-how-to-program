@@ -4,6 +4,21 @@ public class ArrayOperations {
 
     private int[] array;
 
+    /*public static void main(String[] args) {
+        int[] array = {4,5,6,7};
+        ArrayOperations arrayOperations = new ArrayOperations(array);
+        System.out.println(arrayOperations);
+    }
+
+    @Override
+    public String toString() {
+        String arrayString = "";
+        for (int arrayItem: array) {
+            arrayString += arrayItem + " ";
+        }
+        return arrayString;
+    }*/
+
     public ArrayOperations(int[] array) {
         this.array = array;
     }
@@ -118,8 +133,14 @@ public class ArrayOperations {
     }
 
     public void printArray() {
+        System.out.println(printArrayP());
+    }
+
+    private String printArrayP() {
+        String arrayString = "";
         for (int arrayItem: array) {
-            System.out.println(arrayItem);
+            arrayString += arrayItem + " ";
         }
+        return arrayString;
     }
 }

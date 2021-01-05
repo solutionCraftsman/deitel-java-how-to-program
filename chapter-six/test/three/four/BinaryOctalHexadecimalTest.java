@@ -26,7 +26,7 @@ class BinaryOctalHexadecimalTest {
 
     @Test
     void testOctal() {
-        assertEquals(713, binaryOctalHexadecimal.toOctal(459));
+                                                                                                                                                                                                                                                                                                                                                                                                                                                       assertEquals(713, binaryOctalHexadecimal.toOctal(459));
         assertEquals(352, binaryOctalHexadecimal.toOctal(234));
     }
 
