@@ -19,6 +19,10 @@ class FindTheMinimumTest {
     @Test
     void testMinimum3(){
         FindTheMinimum findTheMinimum = new FindTheMinimum();
-        assertEquals(30.50, findTheMinimum.minimum3(45.03, 30.50, 50.65));
+        findTheMinimum.inputFirstNumber();
+        findTheMinimum.inputSecondNumber();
+        findTheMinimum.inputThirdNumber();
+        //45.03, 30.50, 50.65
+        assertEquals(30.50, findTheMinimum.minimum3());
     }
 }
