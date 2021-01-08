@@ -12,16 +12,16 @@ public class FindTheMinimum {
         return Math.min(firstNumber, Math.min(secondNumber, thirdNumber));
     }
 
-    public void inputFirstNumber() {
-        firstNumber = readInput();
+    public void setFirstNumber(double firstNumber) {
+        this.firstNumber = firstNumber;
     }
 
-    public void inputSecondNumber() {
-        secondNumber = readInput();
+    public void setSecondNumber(double secondNumber) {
+        this.secondNumber = secondNumber;
     }
 
-    public void inputThirdNumber() {
-        thirdNumber = readInput();
+    public void setThirdNumber(double thirdNumber) {
+        this.thirdNumber = thirdNumber;
     }
 
     public double readInput() {

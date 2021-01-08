@@ -17,12 +17,14 @@ class FindTheMinimumTest {
     }
 
     @Test
-    void testMinimum3(){
+    void testMinimum3() {
         FindTheMinimum findTheMinimum = new FindTheMinimum();
-        findTheMinimum.inputFirstNumber();
-        findTheMinimum.inputSecondNumber();
-        findTheMinimum.inputThirdNumber();
+
+        findTheMinimum.setFirstNumber(findTheMinimum.readInput());
+        findTheMinimum.setSecondNumber(findTheMinimum.readInput());
+        findTheMinimum.setThirdNumber(findTheMinimum.readInput());
         //45.03, 30.50, 50.65
         assertEquals(30.50, findTheMinimum.minimum3());
     }
 }
+

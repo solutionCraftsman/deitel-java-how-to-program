@@ -12,7 +12,7 @@ class TurtleGraphicsTest {
 
     @BeforeEach
     void setUp() {
-        int[] movementCommand = {5, 6, 3, 5, 5, 9};
+        int[] movementCommand = {2, 5, 6, 3, 5, 5, 9};
         turtleGraphics = new TurtleGraphics(movementCommand);
     }
 
@@ -35,16 +35,24 @@ class TurtleGraphicsTest {
 
     @Test
     void testThatPenCanBeToggled() {
-        turtleGraphics.setPenState(TurtleGraphics.PenState.DOWN);
+        int[] movementCommand = {1};
+        turtleGraphics.setMovementCommand(movementCommand);
+        turtleGraphics.move();
+        assertEquals(TurtleGraphics.PenState.UP, turtleGraphics.getPenState());
+
+        movementCommand[0] = 2;
+        turtleGraphics.setMovementCommand(movementCommand);
+        turtleGraphics.move();
         assertEquals(TurtleGraphics.PenState.DOWN, turtleGraphics.getPenState());
 
-        turtleGraphics.setPenState(TurtleGraphics.PenState.UP);
+        movementCommand[0] = 1;
+        turtleGraphics.setMovementCommand(movementCommand);
+        turtleGraphics.move();
         assertEquals(TurtleGraphics.PenState.UP, turtleGraphics.getPenState());
     }
 
     @Test
     void testThat_turtleCanTraceOutShape_whenPenIsDown() {
-        turtleGraphics.setPenState(TurtleGraphics.PenState.DOWN);
         turtleGraphics.move();
 
         int[][] expectedFloor = new int[20][20];
@@ -66,16 +74,18 @@ class TurtleGraphicsTest {
 
     @Test
     void testThat_nineWorksAsSentinelValue_inCommandArray() {
-        assertTrue(turtleGraphics.doNextCommand());
-
-        int[] movementCommand = {9, 5, 6, 3};
+        int[] movementCommand = {2, 9, 5, 6, 3};
         turtleGraphics.setMovementCommand(movementCommand);
-        assertFalse(turtleGraphics.doNextCommand());
+        turtleGraphics.move();
+
+        int[][] expectedFloor = new int[20][20];
+        assertArrayEquals(expectedFloor, turtleGraphics.getFloor());
     }
 
     @Test
     void testThat_arrayCanBeDisplayed_inGraphicalForm() {
-        turtleGraphics.setPenState(TurtleGraphics.PenState.DOWN);
+        int[] movementCommand = {2, 5, 6, 3, 5, 5, 6, 9};
+        turtleGraphics.setMovementCommand(movementCommand);
         turtleGraphics.move();
 
         char[][] expectedDisplay = new char[20][20];
@@ -101,6 +111,27 @@ class TurtleGraphicsTest {
         }
 
         assertArrayEquals(expectedDisplay, turtleGraphics.setGraphicsArray());
-        turtleGraphics.displayGraphics();
+    }
+
+    @Test
+    void testTurtleCanMove_forNumberOfSteps_lessThanFive() {
+        int[] movementCommand = {2, 5, 4, 3, 5, 3, 4, 5, 2, 3, 5, 1, 6, 9};
+        turtleGraphics.setMovementCommand(movementCommand);
+        turtleGraphics.move();
+
+        int[][] expectedFloor = new int[20][20];
+        expectedFloor[0][0] = 1;
+        expectedFloor[0][1] = 1;
+        expectedFloor[0][2] = 1;
+        expectedFloor[0][3] = 1;
+        expectedFloor[0][4] = 1;
+        expectedFloor[1][4] = 1;
+        expectedFloor[2][4] = 1;
+        expectedFloor[3][4] = 1;
+        expectedFloor[3][5] = 1;
+        expectedFloor[3][6] = 1;
+        expectedFloor[4][6] = 1;
+
+        assertArrayEquals(expectedFloor, turtleGraphics.getFloor());
     }
 }

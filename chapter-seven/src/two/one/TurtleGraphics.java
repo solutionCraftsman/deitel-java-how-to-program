@@ -5,7 +5,7 @@ public class TurtleGraphics {
     private PenState penState;
     private Direction direction;
     private int[] position;
-    private int currentNoOfSteps;
+    private int currentNoOfStepsToMove;
     private int indexOfCurrentCommand;
 
     public enum PenState {
@@ -42,31 +42,41 @@ public class TurtleGraphics {
         return penState;
     }
 
-    public void setPenState(PenState penState) {
-        this.penState = penState;
-    }
-
     public Direction getDirection() {
         return direction;
     }
 
     public void move() {
-        while (doNextCommand()) {
+        while (indexOfCurrentCommand < movementCommand.length) {
             switch (movementCommand[indexOfCurrentCommand]) {
+                case 1 -> setPenStateToUp();
+                case 2 -> setPenStateToDown();
                 case 3 -> turnRight();
                 case 4 -> turnLeft();
                 case 5 -> {
                     try {
-                        currentNoOfSteps = movementCommand[++indexOfCurrentCommand];
+                        currentNoOfStepsToMove = movementCommand[++indexOfCurrentCommand];
                         moveForward();
                     } catch (ArrayIndexOutOfBoundsException e) {
                         System.out.println("Trying to move forward without specifying steps");
                     }
                 }
+                case 6 -> displayGraphics();
+                case 9 -> {
+                    return;
+                }
                 //case 10 -> continue; //unnecessary, do nothing
             }
             indexOfCurrentCommand++;
         }
+    }
+
+    private void setPenStateToUp() {
+        penState = PenState.UP;
+    }
+
+    private void setPenStateToDown() {
+        penState = PenState.DOWN;
     }
 
     private void turnRight() {
@@ -90,10 +100,10 @@ public class TurtleGraphics {
     private void moveForward() {
         hasSetFloorElementForCurrentPosition = false;
         switch (direction) {
-            case LEFT -> moveLeft(currentNoOfSteps);
-            case UP -> moveUp(currentNoOfSteps);
-            case RIGHT -> moveRight(currentNoOfSteps);
-            case DOWN -> moveDown(currentNoOfSteps);
+            case LEFT -> moveLeft(currentNoOfStepsToMove);
+            case UP -> moveUp(currentNoOfStepsToMove);
+            case RIGHT -> moveRight(currentNoOfStepsToMove);
+            case DOWN -> moveDown(currentNoOfStepsToMove);
         }
     }
 
@@ -184,11 +194,6 @@ public class TurtleGraphics {
     public void setMovementCommand(int[] movementCommand) {
         this.movementCommand = movementCommand;
         indexOfCurrentCommand = 0;
-    }
-
-    public boolean doNextCommand() {
-        return (indexOfCurrentCommand < movementCommand.length) &&
-                (movementCommand[indexOfCurrentCommand] != 9);
     }
 
     public char[][] setGraphicsArray() {
