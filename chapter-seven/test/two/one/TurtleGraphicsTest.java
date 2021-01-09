@@ -134,4 +134,41 @@ class TurtleGraphicsTest {
 
         assertArrayEquals(expectedFloor, turtleGraphics.getFloor());
     }
+    
+    @Test
+    void testTurtle_doesNotMove_outOfFloorBoundary() {
+        int[] movementCommand = {2, 5, 6, 3, 5, 25, 6, 9};
+        turtleGraphics.setMovementCommand(movementCommand);
+        turtleGraphics.move();
+
+        int[][] expectedFloor = new int[20][20];
+        expectedFloor[0][0] = 1;
+        expectedFloor[0][1] = 1;
+        expectedFloor[0][2] = 1;
+        expectedFloor[0][3] = 1;
+        expectedFloor[0][4] = 1;
+        expectedFloor[0][5] = 1;
+        expectedFloor[0][6] = 1;
+        expectedFloor[1][6] = 1;
+        expectedFloor[2][6] = 1;
+        expectedFloor[3][6] = 1;
+        expectedFloor[4][6] = 1;
+        expectedFloor[5][6] = 1;
+        expectedFloor[6][6] = 1;
+        expectedFloor[7][6] = 1;
+        expectedFloor[8][6] = 1;
+        expectedFloor[9][6] = 1;
+        expectedFloor[10][6] = 1;
+        expectedFloor[11][6] = 1;
+        expectedFloor[12][6] = 1;
+        expectedFloor[13][6] = 1;
+        expectedFloor[14][6] = 1;
+        expectedFloor[15][6] = 1;
+        expectedFloor[16][6] = 1;
+        expectedFloor[17][6] = 1;
+        expectedFloor[18][6] = 1;
+        expectedFloor[19][6] = 1;
+
+        assertArrayEquals(expectedFloor, turtleGraphics.getFloor());
+    }
 }
