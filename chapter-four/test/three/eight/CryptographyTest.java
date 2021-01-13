@@ -21,6 +21,10 @@ class CryptographyTest {
 
     @Test
     void testThat_applicationCan_readFourDigitInteger() {
+        int [][] x = {{1,2,3}, {1,2,3}};
+        for (int i = 0; i < x[0].length; i++) {
+
+        }
         cryptography.readRawData();
         assertEquals(8694, cryptography.getRawData());
     }
