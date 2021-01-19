@@ -50,6 +50,7 @@ class DiceRollingTest {
         assertTrue(diceRolling.getTallyResults()[24 - 1] > 0);
         assertTrue(diceRolling.getTallyResults()[30 - 1] > 0);
         assertTrue(diceRolling.getTallyResults()[36 - 1] > 0);
+
     }
 }
 
