@@ -34,7 +34,7 @@ class TurtleGraphicsTest {
     }
 
     @Test
-    void testThatPenCanBeToggled() {
+    void testThatPenStateCanBeToggled() {
         int[] movementCommand = {1};
         turtleGraphics.setMovementCommand(movementCommand);
         turtleGraphics.move();
