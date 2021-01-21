@@ -33,13 +33,17 @@ public class GameOfCraps {
 
         System.out.println("Number of Games Won on Rolls");
         for (int roll = 0; roll < gamesWon.length; roll++) {
-            System.out.println(roll+1 + " -> " + gamesWon[roll]);
+            System.out.println(roll + 1 + " -> " + gamesWon[roll]);
         }
 
+        System.out.println();
+
         System.out.println("Number of Games Lost on Rolls");
-        for (int roll = 0; roll < gamesWon.length; roll++) {
-            System.out.println(roll+1 + " -> " + gamesWon[roll]);
+        for (int roll = 0; roll < gamesLost.length; roll++) {
+            System.out.println(roll + 1 + " -> " + gamesLost[roll]);
         }
+
+        System.out.println();
 
         System.out.println("Chance of Winning at Craps");
         double totalWins = 0;
@@ -50,8 +54,10 @@ public class GameOfCraps {
         }
         System.out.println(totalWins / totalLosses);
 
+        System.out.println();
+
         System.out.println("Average Length of a Game of Craps");
-        System.out.println((totalWins + totalLosses) / 1_000_000);
+        System.out.println((totalWins + totalLosses) / 20);
 
         System.out.println("No, the chances of winning reduces with the length of the game!");
 
