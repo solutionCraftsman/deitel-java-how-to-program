@@ -4,7 +4,7 @@ public class TurtleGraphics {
 
     private PenState penState;
     private Direction direction;
-    private int[] position;
+    private final int[] position;
     private int currentNoOfStepsToMove;
     private int indexOfCurrentCommand;
 
@@ -20,7 +20,7 @@ public class TurtleGraphics {
         DOWN
     }
 
-    private int[][] floor;
+    private final int[][] floor;
     private int[] movementCommand;
     private boolean isAtLeftEdge;
     private boolean isAtTop;
@@ -187,8 +187,6 @@ public class TurtleGraphics {
         if(penState == PenState.DOWN) {
             floor[position[0]][position[1]] = 1;
         }
-        //System.out.print(position[0] + "," + position[1] + " - ");
-        //System.out.println(floor[position[0]][position[1]]);
     }
 
     public void setMovementCommand(int[] movementCommand) {

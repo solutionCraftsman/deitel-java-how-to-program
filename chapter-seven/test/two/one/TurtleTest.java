@@ -169,5 +169,4 @@ class TurtleTest {
         assertEquals(new Position(0, 0), turtle.getCurrentPosition());
     }
 
-
 }
