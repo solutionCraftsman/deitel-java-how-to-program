@@ -2,7 +2,7 @@ package two.one;
 
 public class Turtle {
 
-    private Pen pen;
+    private final Pen pen;
     private CurrentDirection currentDirection;
     private Position currentPosition;
 
