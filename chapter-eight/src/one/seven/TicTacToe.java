@@ -23,6 +23,10 @@ public class TicTacToe {
     }
 
     public void makeAMove(int cellNumber) {
+        if(cellNumber < 1 || cellNumber > 9) {
+            return;
+        }
+
         if(firstPlayer.isNextToPlay()) {
             board.markCell(cellNumber, CellValue.X);
             firstPlayer.toggleTurn();
@@ -35,7 +39,7 @@ public class TicTacToe {
             }
         }
 
-        board.display();
+        System.out.println(board.display());
         analyzeGame();
     }
 
@@ -51,14 +55,15 @@ public class TicTacToe {
         if(firstPlayer.won() || secondPlayer.won()) {
             gameHasBeenWon = true;
         } else {
-            gameIsADraw = true;
+            if(board.isCompletelyFilled()) {
+                gameIsADraw = true;
+            }
         }
     }
 
     private boolean playerHasWon(CellValue cellValue) {
-        return board.leftColumnIsFilled(cellValue) || board.topRowIsFilled(cellValue) ||
-                board.rightColumnIsFilled(cellValue) || board.bottomRowIsFilled(cellValue) ||
-                board.leftDiagonalIsFilled(cellValue) || board.rightDiagonalIsFilled(cellValue);
+        return board.anyRowIsFilledWith(cellValue) || board.anyColumnIsFilledWith(cellValue) ||
+                board.leftDiagonalIsFilledWith(cellValue) || board.rightDiagonalIsFilledWith(cellValue);
     }
 
     public Player getSecondPlayer() {
