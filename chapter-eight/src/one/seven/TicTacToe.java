@@ -5,13 +5,15 @@ public class TicTacToe {
     private final Board board;
     private final Player firstPlayer;
     private final Player secondPlayer;
+    private Player currentPlayer;
+    private Player winner;
     private boolean gameHasBeenWon;
     private boolean gameIsADraw;
 
     public TicTacToe() {
         this.board = new Board();
-        firstPlayer = new Player();
-        secondPlayer = new Player();
+        firstPlayer = new Player("Player 1");
+        secondPlayer = new Player("Player 2");
     }
 
     public Board getBoard() {
@@ -31,11 +33,13 @@ public class TicTacToe {
             board.markCell(cellNumber, CellValue.X);
             firstPlayer.toggleTurn();
             secondPlayer.toggleTurn();
+            currentPlayer = secondPlayer;
         } else {
             if(secondPlayer.isNextToPlay()) {
                 board.markCell(cellNumber, CellValue.O);
                 secondPlayer.toggleTurn();
                 firstPlayer.toggleTurn();
+                currentPlayer = firstPlayer;
             }
         }
 
@@ -46,9 +50,11 @@ public class TicTacToe {
     private void analyzeGame() {
         if(playerHasWon(CellValue.X)) {
             firstPlayer.setWon(true);
+            winner = firstPlayer;
         } else {
             if(playerHasWon(CellValue.O)) {
                 secondPlayer.setWon(true);
+                winner = secondPlayer;
             }
         }
 
@@ -68,6 +74,19 @@ public class TicTacToe {
 
     public Player getSecondPlayer() {
         return secondPlayer;
+    }
+
+    public Player getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+    public void setCurrentPlayer() {
+        currentPlayer = (firstPlayer.isNextToPlay() && !secondPlayer.isNextToPlay()) ?
+                firstPlayer : secondPlayer;
+    }
+
+    public Player getWinner() {
+        return winner;
     }
 
     public boolean gameHasBeenWon() {

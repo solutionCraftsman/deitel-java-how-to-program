@@ -98,16 +98,19 @@ public class Board {
     }
 
     public String display() {
-        StringBuilder board = new StringBuilder();
+        StringBuilder boardDisplay = new StringBuilder();
+        boardDisplay.append("-------------\n");
         for (Cell[] row : cells) {
+            boardDisplay.append("| ");
             for (Cell column : row) {
-                board.append(column.getValue().getCharacter()).append(" ");
+                boardDisplay.append(column.getValue().getCharacter()).append(" | ");
             }
-            board.append("\n");
+            boardDisplay.append("\n-------------");
+            boardDisplay.append("\n");
         }
-        board.append("\n");
+        boardDisplay.append("\n");
 
-        return board.toString();
+        return boardDisplay.toString();
     }
 
     public boolean isCompletelyFilled() {
