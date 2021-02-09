@@ -11,7 +11,7 @@ public class TicTacToe {
     private boolean gameIsADraw;
 
     public TicTacToe() {
-        this.board = new Board();
+        this.board = new Board(3);
         firstPlayer = new Player("Player 1");
         secondPlayer = new Player("Player 2");
     }

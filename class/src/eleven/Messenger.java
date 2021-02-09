@@ -8,17 +8,17 @@ public class Messenger {
     }
 
     private Beans buyBeansWith(int amount, int demandedQuantity, boolean withOil, boolean isMoneyFake)
-        throws Exception {
+        throws MoneyIssueException {
 
         final int PRICE_PER_SPOON = 100;
         int quantityOfBeansAffordable = amount / PRICE_PER_SPOON;
 
         if(isMoneyFake) {
-            throw new Exception("Yahoo boy!");
+            throw new FakeMoneyException("Yahoo boy!");
         }
 
         if(demandedQuantity != quantityOfBeansAffordable) {
-            throw new Exception("Money no reach for " + demandedQuantity);
+            throw new MoneyNoReachException("Money no reach for " + demandedQuantity);
         }
 
         return new Beans(amount, withOil);
