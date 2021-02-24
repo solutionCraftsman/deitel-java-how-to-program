@@ -1,15 +1,15 @@
 package com.pentax;
 
-import jakarta.xml.bind.JAXB;
+import jakarta.xml.bind.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -45,12 +45,41 @@ class AccountTest {
         Path filePath = Paths.get(fileName);
 
         try {
-            BufferedWriter output = Files.newBufferedWriter(filePath);
-            JAXB.marshal(accounts, output);
+            BufferedWriter writer = Files.newBufferedWriter(filePath);
+            JAXB.marshal(accounts, writer);
             assertNotNull(filePath);
             assertTrue(Files.exists(filePath));
 
-            output.close();
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @Test
+    void readXMLFile() {
+
+        String fileName = "/home/ayodele/Semicolon Africa/temp/clients.xml";
+        Path filePath = Paths.get(fileName);
+
+        assertNotNull(filePath);
+        assertTrue(Files.exists(filePath));
+
+        try {
+            BufferedReader reader = Files.newBufferedReader(filePath);
+            Accounts accounts = JAXB.unmarshal(reader, Accounts.class);
+
+            List<Account> listOfAccounts = accounts.getAccounts();
+
+            for (Account account : listOfAccounts) {
+                System.out.println(account.getAccountNumber());
+                System.out.println(account.getFirstName());
+                System.out.println(account.getLastName());
+                System.out.println(account.getBalance());
+                System.out.println();
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
