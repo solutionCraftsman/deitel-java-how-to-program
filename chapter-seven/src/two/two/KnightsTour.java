@@ -3,36 +3,51 @@ package two.two;
 public class KnightsTour {
 
     private Position currentPosition;
+    private KnightMoveNumber knightMoveNumber;
 
     public KnightsTour(Board board, Position currentPosition) {
         this.currentPosition = currentPosition;
-        board.getSquare(currentPosition).hasBeenVisitedByKnight(true);
+        board.getSquare(currentPosition.getRow(), currentPosition.getColumn()).
+                setToHaveBeenVisitedByKnight();
     }
 
     public Position getCurrentPosition() {
         return currentPosition;
     }
 
-    public void move(Board board, KnightMove knightMove) {
-        Position newPosition = new Position(
-                getCurrentPosition().getRow() + knightMove.getNumberOfVerticalSteps(),
-                getCurrentPosition().getColumn() + knightMove.getNumberOfHorizontalSteps());
+    public void setKnightMoveNumber(KnightMoveNumber knightMoveNumber) {
+        this.knightMoveNumber = knightMoveNumber;
+    }
 
-        if(knightDoesNotLandOffTheChessboard(newPosition)){
-            if(!board.getSquare(newPosition).hasBeenVisitedByKnight()) {
-                setCurrentPosition(newPosition);
-                board.getSquare(newPosition).hasBeenVisitedByKnight(true);
+    public void move(Board board) {
+
+        if(knightDoesNotLandOffTheChessboard(board)){
+            if(squareHasNotBeenVisited(board)) {
+                setCurrentPosition(getNewPosition());
+                board.getSquare(currentPosition.getRow(),
+                        currentPosition.getColumn()).setToHaveBeenVisitedByKnight();
             }
         }
+
     }
 
-    public boolean knightDoesNotLandOffTheChessboard(Position newPosition) {
-        return newRowOrColumnIsWithinBoardRange(newPosition.getRow()) &&
-                newRowOrColumnIsWithinBoardRange(newPosition.getColumn());
+    public boolean squareHasNotBeenVisited(Board board) {
+        return !board.getSquare(getNewPosition().getRow(),
+                getNewPosition().getColumn()).hasBeenVisitedByKnight();
     }
 
-    private boolean newRowOrColumnIsWithinBoardRange(int newRowOrColumn) {
-        return (0 <= newRowOrColumn) && (newRowOrColumn < Board.ROW_AND_COLUMN_RANGE);
+    public Position getNewPosition() {
+        return new Position(
+                getCurrentPosition().getRow() + knightMoveNumber.getNumberOfVerticalSteps(),
+                getCurrentPosition().getColumn() + knightMoveNumber.getNumberOfHorizontalSteps());
+    }
+
+    public boolean knightDoesNotLandOffTheChessboard(Board board) {
+        try {
+            return board.isValidSquare(getNewPosition().getRow(), getNewPosition().getColumn());
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            throw new RuntimeException("Invalid move. Knight Lands off Board.");
+        }
     }
 
     private void setCurrentPosition(Position newPosition) {

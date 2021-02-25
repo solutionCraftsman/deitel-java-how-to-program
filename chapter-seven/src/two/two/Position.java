@@ -21,10 +21,9 @@ public class Position {
     @Override
     public boolean equals(Object obj) {
         boolean isEquals = false;
-        if(obj.getClass().equals(getClass())) {
-            Position positionToCompare = (Position) obj;
-            isEquals = positionToCompare.getRow() == getRow() &&
-                    positionToCompare.getColumn() == getColumn();
+        if(obj instanceof Position positionToCompare) {
+            isEquals = (positionToCompare.getRow() == getRow()) &&
+                    (positionToCompare.getColumn() == getColumn());
         }
         return isEquals;
     }

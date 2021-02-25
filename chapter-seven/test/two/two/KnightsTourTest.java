@@ -11,12 +11,12 @@ import static org.junit.jupiter.api.Assertions.*;
 class KnightsTourTest {
 
     Board board;
-    KnightsTour kn;
+    KnightsTour knightsTour;
 
     @BeforeEach
     void setUp() {
         board = new Board();
-        kn = new KnightsTour(board, new Position(3, 4));
+        knightsTour = new KnightsTour(board, new Position(3, 4));
     }
 
     @AfterEach
@@ -24,97 +24,181 @@ class KnightsTourTest {
     }
 
     @Test
-    void knight_canMake_moveNumberOne() {
-        kn.move(board, new KnightMove(1));
-        assertEquals(new Position(2, 6), kn.getCurrentPosition());
+    void knightHas_aPosition() {
+        assertNotNull(knightsTour.getCurrentPosition());
+        assertEquals(new Position(3, 4), knightsTour.getCurrentPosition());
     }
 
     @Test
-    void knight_canMake_moveNumberTwo() {
-        kn.move(board, new KnightMove(2));
-        assertEquals(new Position(1, 5), kn.getCurrentPosition());
+    void knightCanMake_moveNumberOne() {
+        knightsTour.setKnightMoveNumber(KnightMoveNumber.ONE);
+        knightsTour.move(board);
+        assertEquals(new Position(2, 6), knightsTour.getCurrentPosition());
     }
 
     @Test
-    void knight_canMake_moveNumberThree() {
-        kn.move(board, new KnightMove(3));
-        assertEquals(new Position(1, 3), kn.getCurrentPosition());
+    void knightCanMake_moveNumberTwo() {
+        knightsTour.setKnightMoveNumber(KnightMoveNumber.TWO);
+        knightsTour.move(board);
+        assertEquals(new Position(1, 5), knightsTour.getCurrentPosition());
     }
 
     @Test
-    void knight_canMake_moveNumberFour() {
-        kn.move(board, new KnightMove(4));
-        assertEquals(new Position(2, 2), kn.getCurrentPosition());
+    void knightCanMake_moveNumberThree() {
+        knightsTour.setKnightMoveNumber(KnightMoveNumber.THREE);
+        knightsTour.move(board);
+        assertEquals(new Position(1, 3), knightsTour.getCurrentPosition());
     }
 
     @Test
-    void knight_canMake_moveNumberFive() {
-        kn.move(board, new KnightMove(5));
-        assertEquals(new Position(4, 2), kn.getCurrentPosition());
+    void knightCanMake_moveNumberFour() {
+        knightsTour.setKnightMoveNumber(KnightMoveNumber.FOUR);
+        knightsTour.move(board);
+        assertEquals(new Position(2, 2), knightsTour.getCurrentPosition());
     }
 
     @Test
-    void knight_canMake_moveNumberSix() {
-        kn.move(board, new KnightMove(6));
-        assertEquals(new Position(5, 3), kn.getCurrentPosition());
+    void knightCanMake_moveNumberFive() {
+        knightsTour.setKnightMoveNumber(KnightMoveNumber.FIVE);
+        knightsTour.move(board);
+        assertEquals(new Position(4, 2), knightsTour.getCurrentPosition());
     }
 
     @Test
-    void knight_canMake_moveNumberSeven() {
-        kn.move(board, new KnightMove(7));
-        assertEquals(new Position(5, 5), kn.getCurrentPosition());
+    void knightCanMake_moveNumberSix() {
+        knightsTour.setKnightMoveNumber(KnightMoveNumber.SIX);
+        knightsTour.move(board);
+        assertEquals(new Position(5, 3), knightsTour.getCurrentPosition());
     }
 
     @Test
-    void knight_canMake_moveNumberEight() {
-        kn.move(board, new KnightMove(8));
-        assertEquals(new Position(4, 6), kn.getCurrentPosition());
+    void knightCanMake_moveNumberSeven() {
+        knightsTour.setKnightMoveNumber(KnightMoveNumber.SEVEN);
+        knightsTour.move(board);
+        assertEquals(new Position(5, 5), knightsTour.getCurrentPosition());
+    }
+
+    @Test
+    void knightCanMake_moveNumberEight() {
+        knightsTour.setKnightMoveNumber(KnightMoveNumber.EIGHT);
+        knightsTour.move(board);
+        assertEquals(new Position(4, 6), knightsTour.getCurrentPosition());
     }
 
     @Test
     void knight_cannotVisit_sameSquareTwice() {
-        Position currentPosition = kn.getCurrentPosition();
+        Position currentPosition = knightsTour.getCurrentPosition();
+        assertTrue(board.getSquare(currentPosition.getRow(), currentPosition.getColumn()).hasBeenVisitedByKnight());
 
-        kn.move(board, new KnightMove(8));
-        assertTrue(board.getSquare(currentPosition).hasBeenVisitedByKnight());
+        knightsTour.setKnightMoveNumber(KnightMoveNumber.EIGHT);
+        knightsTour.move(board);
+        assertTrue(board.getSquare(currentPosition.getRow(), currentPosition.getColumn()).hasBeenVisitedByKnight());
 
-        currentPosition = kn.getCurrentPosition();
-        kn.move(board, new KnightMove(6));
-        assertTrue(board.getSquare(currentPosition).hasBeenVisitedByKnight());
+        currentPosition = knightsTour.getCurrentPosition();
+        knightsTour.setKnightMoveNumber(KnightMoveNumber.SIX);
+        knightsTour.move(board);
+        assertTrue(board.getSquare(currentPosition.getRow(), currentPosition.getColumn()).hasBeenVisitedByKnight());
     }
 
     @Test
     void knight_doesNotLand_offTheChessboard() {
-        kn.move(board, new KnightMove(1));
+        Board board = new Board();
 
-        Position invalidPosition = new Position(1, 8);
-        assertFalse(kn.knightDoesNotLandOffTheChessboard(invalidPosition));
-        Position currentPosition = kn.getCurrentPosition();
+        assertThrows(ArrayIndexOutOfBoundsException.class,
+                () -> new KnightsTour(board, new Position(1, 8)));
 
-        kn.move(board, new KnightMove(1));
-        assertEquals(currentPosition, kn.getCurrentPosition());
+        assertThrows(ArrayIndexOutOfBoundsException.class,
+                () -> new KnightsTour(board, new Position(8, 1)));
+
+        knightsTour.setKnightMoveNumber(KnightMoveNumber.ONE);
+        knightsTour.move(board);
+        Position currentPosition = knightsTour.getCurrentPosition();
+        knightsTour.setKnightMoveNumber(KnightMoveNumber.ONE);
+
+        assertThrows(RuntimeException.class,
+                () -> knightsTour.move(board));
+
+        assertEquals(currentPosition, knightsTour.getCurrentPosition());
     }
 
     @Test
     void moveKnight_aroundChessboard() {
-        Position currentPosition;
+        SecureRandom secureRandom = new SecureRandom();
+        Board board = new Board();
+        /*KnightsTour knightsTour = new KnightsTour(board,
+                new Position(secureRandom.nextInt(Board.ROW_AND_COLUMN_RANGE),
+                        secureRandom.nextInt(Board.ROW_AND_COLUMN_RANGE)));*/
+
+        KnightsTour knightsTour = new KnightsTour(board, new Position(0, 0));
+        Position currentPosition = knightsTour.getCurrentPosition();
         Position previousPosition;
 
-        for (int counter = 1, uniquePositions = 1; counter <= 64; counter++) {
-            previousPosition = kn.getCurrentPosition();
-            SecureRandom secureRandom = new SecureRandom();
-//            kn.move(board, new KnightMove(counter % 8));
-            kn.move(board, new KnightMove(1 + secureRandom.nextInt(8)));
-            currentPosition = kn.getCurrentPosition();
+        System.out.println();
+        System.out.println("Starting at:");
+        System.out.println("Row: " + currentPosition.getRow() + "\n" +
+                "Column: " + currentPosition.getColumn());
+        System.out.println("------------------");
+
+        for (int counter = 1, movesMade = 0; counter <= 64; counter++) {
+            previousPosition = knightsTour.getCurrentPosition();
+
+            boolean isNotAValidMoveNumber = true;
+            boolean isNotAnUnvisitedSquare = true;
+
+            while (isNotAValidMoveNumber && isNotAnUnvisitedSquare) {
+
+                Square newSquare;
+                Square leastAccessibleSquare = new Square(SquareAccessibilityNumber.EIGHT);
+                KnightMoveNumber moveToLeastAccessibleSquare = KnightMoveNumber.random();
+                Position newPosition;
+
+                try {
+
+                    for (KnightMoveNumber knightMoveNumber : KnightMoveNumber.values()) {
+                        knightsTour.setKnightMoveNumber(knightMoveNumber);
+                        if(knightsTour.squareHasNotBeenVisited(board) &&
+                                knightsTour.knightDoesNotLandOffTheChessboard(board)) {
+
+                            newPosition = knightsTour.getNewPosition();
+                            newSquare = board.getSquare(newPosition.getRow(), newPosition.getColumn());
+                            if(newSquare.getAccessibilityNumber().getValue() <
+                                    leastAccessibleSquare.getAccessibilityNumber().getValue()) {
+                                moveToLeastAccessibleSquare = knightMoveNumber;
+                            }
+                        }
+                    }
+
+                } catch (RuntimeException runtimeException) {
+                    System.err.println(runtimeException.getMessage());
+                }
+
+                knightsTour.setKnightMoveNumber(moveToLeastAccessibleSquare);
+
+                try {
+
+                    if (knightsTour.knightDoesNotLandOffTheChessboard(board))
+                        isNotAValidMoveNumber = false;
+
+                    if (knightsTour.squareHasNotBeenVisited(board))
+                        isNotAnUnvisitedSquare = false;
+
+                } catch (RuntimeException runtimeException) {
+                    System.err.println(runtimeException.getMessage());
+                }
+            }
+
+            knightsTour.move(board);
+            currentPosition = knightsTour.getCurrentPosition();
+
+            if (!currentPosition.equals(previousPosition)) {
+                movesMade++;
+                System.out.println("Row: " + currentPosition.getRow() + "\n" +
+                        "Column: " + currentPosition.getColumn());
+            }
 
             System.out.println("Counter: " + counter);
-            if(!currentPosition.equals(previousPosition)){
-                System.out.print(uniquePositions + " - ");
-                System.out.print(kn.getCurrentPosition().getRow() + ", " +
-                        kn.getCurrentPosition().getColumn());
-                uniquePositions++;
-                System.out.println("\n");
-            }
+            System.out.println("Moves made: " + movesMade);
+            System.out.println("------------------");
         }
     }
 }
