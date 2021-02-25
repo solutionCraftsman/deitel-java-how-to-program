@@ -12,6 +12,10 @@ public class Board {
         initializeSquaresWithAccessibilityNumbers();
     }
 
+    public Square[][] getSquares() {
+        return squares;
+    }
+
     private void initializeSquaresWithAccessibilityNumbers() {
         for (int row = 0; row < squares.length; row++) {
             for (int column = 0; column < squares[row].length; column++) {

@@ -101,6 +101,21 @@ class KnightsTourTest {
     }
 
     @Test
+    void squaresHaveAccessibilityNumbers() {
+        for (Square[] squares : board.getSquares()) {
+            for (Square square : squares) {
+                assertNotNull(square.getAccessibilityNumber());
+                assertNotEquals(0, square.getAccessibilityNumber().getValue());
+            }
+        }
+    }
+
+    @Test
+    void getRandomKnightMoveNumber() {
+        assertNotNull(KnightMoveNumber.random());
+    }
+
+    @Test
     void knight_doesNotLand_offTheChessboard() {
         Board board = new Board();
 
