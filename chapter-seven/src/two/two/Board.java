@@ -9,16 +9,16 @@ public class Board {
 
     public Board() {
         this.squares = new Square[ROW_AND_COLUMN_RANGE][ROW_AND_COLUMN_RANGE];
-        initializeSquaresWithAccessibilityNumbers();
+        initializeSquaresWithAccessibilityNumbers(this);
     }
 
     public Square[][] getSquares() {
         return squares;
     }
 
-    private void initializeSquaresWithAccessibilityNumbers() {
-        for (int row = 0; row < squares.length; row++) {
-            for (int column = 0; column < squares[row].length; column++) {
+    private static void initializeSquaresWithAccessibilityNumbers(Board board) {
+        for (int row = 0; row < board.squares.length; row++) {
+            for (int column = 0; column < board.squares[row].length; column++) {
 
                 SquareAccessibilityNumber accessibilityNumber;
 
@@ -65,7 +65,7 @@ public class Board {
                         accessibilityNumber = SquareAccessibilityNumber.EIGHT;
                     }
                 }
-                squares[row][column] = new Square(accessibilityNumber);
+                board.squares[row][column] = new Square(accessibilityNumber);
             }
         }
     }

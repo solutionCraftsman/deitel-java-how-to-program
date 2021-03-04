@@ -31,7 +31,6 @@ class AccountTest {
         accounts.getAccounts().add(pam);
         accounts.getAccounts().add(sam);
         accounts.getAccounts().add(sue);
-
     }
 
     @AfterEach
@@ -54,7 +53,6 @@ class AccountTest {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     @Test
@@ -79,7 +77,6 @@ class AccountTest {
                 System.out.println(account.getBalance());
                 System.out.println();
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }

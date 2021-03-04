@@ -115,18 +115,19 @@ public class ArrayOperations {
 
     public void sort() {
         int temp;
-        for (int arrayItem = 0; arrayItem < array.length; arrayItem++) {
+        for (int index = 0; index < array.length; index++) {
+
             /*if(array[arrayItem] > array[arrayItem + 1]) {
                 temp = array[arrayItem + 1];
                 array[arrayItem + 1] = array[arrayItem];
                 array[arrayItem] = temp;
             }*/
 
-            for (int arrayItemInner = 0; arrayItemInner < arrayItem; arrayItemInner++) {
-                if(array[arrayItem] < array[arrayItemInner]) {
-                    temp = array[arrayItem];
-                    array[arrayItem] = array[arrayItemInner];
-                    array[arrayItemInner] = temp;
+            for (int secondIndex = 0; secondIndex < index; secondIndex++) {
+                if(array[index] < array[secondIndex]) {
+                    temp = array[index];
+                    array[index] = array[secondIndex];
+                    array[secondIndex] = temp;
                 }
             }
         }

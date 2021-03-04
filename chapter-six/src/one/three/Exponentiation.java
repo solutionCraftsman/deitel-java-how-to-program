@@ -1,4 +1,4 @@
-package one.four;
+package one.three;
 
 public class Exponentiation {
 
