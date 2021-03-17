@@ -5,6 +5,6 @@ import pentazon.exceptions.CheckoutException;
 
 public interface ShoppingService {
 
-    public boolean checkOut(Buyer customer) throws CheckoutException;
+    public Order checkOut(Buyer customer) throws CheckoutException;
 
 }

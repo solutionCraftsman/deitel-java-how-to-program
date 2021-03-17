@@ -82,7 +82,7 @@ class CartTest {
         shirt.setProductId("AD003");
         cart.addToCart(shirt);
 
-        CartItem item = cart.getItems().get(plantainChips.getProductId());
+        Item item = cart.getItems().get(plantainChips.getProductId());
         assertEquals(1, item.getQuantity());
 
         item = cart.getItems().get(plantainChips.getProductId());

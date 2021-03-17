@@ -3,14 +3,13 @@ package pentazon.shopping;
 import pentazon.product.Product;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
 
-public class CartItem {
+public class Item {
     private Product product;
     private int quantity;
     private BigDecimal total = BigDecimal.ZERO;
 
-    public CartItem(Product product) {
+    public Item(Product product) {
         this.product = product;
     }
 

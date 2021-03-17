@@ -1,5 +1,6 @@
 package pentazon.customers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,7 +12,7 @@ public abstract class Customer {
     private String firstName;
     private String surname;
 
-    private List<Address> addresses;
+    private List<Address> addresses = new ArrayList<>();
 
     public Integer getId() {
         return id;
@@ -35,5 +36,13 @@ public abstract class Customer {
 
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+    public List<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
     }
 }
