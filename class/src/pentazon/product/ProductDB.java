@@ -5,10 +5,10 @@ import pentazon.exceptions.ProductException;
 import java.math.BigDecimal;
 import java.util.*;
 
-public class ProductRepoMock {
+public class ProductDB {
     private Map<String, Product> mockProducts;
 
-    public ProductRepoMock() {
+    public ProductDB() {
         mockProducts = new HashMap<>();
 
         Product plantainChips = new Product("Adunni Chips",

@@ -4,7 +4,7 @@ import pentazon.exceptions.ProductException;
 
 public class ProductServiceImpl implements ProductService {
 
-    private ProductRepoMock productRepo = new ProductRepoMock();
+    private ProductDB productRepo = new ProductDB();
 
     /**
      * search for product with the specified id

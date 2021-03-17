@@ -1,6 +1,6 @@
 package pentazon.exceptions;
 
-public class ProductException extends PentazonException {
+public class CheckoutException extends PentazonException {
 
     /**
      * Constructs a new exception with the specified detail message.  The
@@ -10,7 +10,7 @@ public class ProductException extends PentazonException {
      * @param message the detail message. The detail message is saved for
      *                later retrieval by the {@link #getMessage()} method.
      */
-    public ProductException(String message) {
+    public CheckoutException(String message) {
         super(message);
     }
 
@@ -28,7 +28,7 @@ public class ProductException extends PentazonException {
      *                unknown.)
      * @since 1.4
      */
-    public ProductException(String message, Throwable cause) {
+    public CheckoutException(String message, Throwable cause) {
         super(message, cause);
     }
 
@@ -46,7 +46,7 @@ public class ProductException extends PentazonException {
      *              unknown.)
      * @since 1.4
      */
-    public ProductException(Throwable cause) {
+    public CheckoutException(Throwable cause) {
         super(cause);
     }
 }
