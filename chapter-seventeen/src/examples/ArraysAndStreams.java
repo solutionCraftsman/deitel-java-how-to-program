@@ -1,5 +1,6 @@
 package examples;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,17 +15,29 @@ public class ArraysAndStreams {
         System.out.printf("Original values: %s%n", Arrays.toString(values));
 
         // sort values in ascending order with streams
-        System.out.printf("Sorted values: %s%n",
-                Arrays.stream(values)
+        System.out.printf("Sorted values: %s%n", Arrays.stream(values)
                 .sorted()
-                .collect(Collectors.toList()));
+                .collect(Collectors.toList())
+        );
 
-        List<Integer> greaterThan4 = Arrays
-                .stream(values)
+        List<Integer> greaterThan4 = Arrays.stream(values)
                 .filter(value -> value > 4)
                 .collect(Collectors.toList());
+        System.out.printf("Values greater than 4: %s%n", greaterThan4);
 
+        System.out.printf("Sorted values greater than 4: %s%n", Arrays.stream(values)
+                .filter(value -> value > 4)
+                .sorted()
+                .collect(Collectors.toList())
+        );
 
+        System.out.printf(
+                "Values greater than 4 (ascending with streams): %s%n", greaterThan4.stream()
+                .sorted()
+                .collect(Collectors.toList()));
     }
+
+
+
 
 }
